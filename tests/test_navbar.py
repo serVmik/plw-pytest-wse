@@ -1,5 +1,6 @@
 import os
 from typing import Generator
+from urllib.parse import urljoin
 
 import pytest
 from dotenv import load_dotenv
@@ -8,12 +9,12 @@ from playwright.sync_api import Page, expect
 load_dotenv()
 
 HOST = os.getenv('HOST')
-STATE_PATH = '/home/dev/projects/plw-pytest-wse/tests/.auth/state.json'
+STATE_PATH = os.getenv('STATE_PATH')
 NAVBAR = ['Личный кабинет: user3', 'Английский язык', 'Выйти']
 NAVIGATION = {
-    'Личный кабинет: user3': 'http://localhost:8000/users/3/account/',
-    'Английский язык': 'http://localhost:8000/english/',
-    'Выйти': 'http://localhost:8000/users/logout/',
+    'Личный кабинет: user3': 'users/3/account/',
+    'Английский язык': 'english/',
+    'Выйти': 'users/logout/',
 }
 
 
@@ -41,6 +42,6 @@ def test_contains(page: Page) -> None:
 def test_navigation_links(page: Page) -> None:
     """Test navigation links."""
     for link_name in NAVBAR[:-2]:
-        url = NAVIGATION[link_name]
+        url = urljoin(HOST, NAVIGATION[link_name])
         page.goto(url)
         expect(page).to_have_url(url)
