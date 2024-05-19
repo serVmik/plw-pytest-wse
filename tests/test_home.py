@@ -8,6 +8,16 @@ from playwright.sync_api import Page, expect
 load_dotenv()
 
 HOST = os.getenv('HOST')
+STATE_PATH = os.getenv('STATE_PATH')
+
+
+@pytest.fixture(autouse=True)
+def browser_context_args(browser_context_args) -> dict:
+    """Reuse the signed-in state."""
+    return {
+        **browser_context_args,
+        'storage_state': STATE_PATH,
+    }
 
 
 @pytest.fixture(autouse=True)
