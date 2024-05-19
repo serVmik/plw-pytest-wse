@@ -1,11 +1,10 @@
 import os
 from typing import Generator
-from unittest import skip
 from urllib.parse import urljoin
 
 import pytest
 from dotenv import load_dotenv
-from playwright.sync_api import Page, expect
+from playwright.sync_api import Page, expect, BrowserContext
 
 load_dotenv()
 
@@ -21,7 +20,8 @@ ENGLISH_CHAPTER_PATHS = {
 
 
 @pytest.fixture()
-def browser_context_args(browser_context_args):
+def browser_context_args(browser_context_args: BrowserContext) -> dict:
+    """Reuse the signed-in state."""
     return {
         **browser_context_args,
         'storage_state': STATE_PATH,
@@ -30,11 +30,11 @@ def browser_context_args(browser_context_args):
 
 @pytest.fixture(autouse=True)
 def run_around_tests(page: Page) -> Generator[None, None, None]:
+    """New browser page pytest-playwright fixture for a test."""
     page.goto(urljoin(HOST, URL_PATH))
     yield
 
 
-# @skip("TODO: add 'task_conditions' to session")
 def test_english_page_status(page: Page) -> None:
     assert page.goto(page.url).ok
 

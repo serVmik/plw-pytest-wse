@@ -40,9 +40,9 @@ def test_page_title(page: Page) -> None:
     expect(page).to_have_title('Упражнение "Изучаем слова"')
 
 
-def test_english_header(page: Page) -> None:
-    header = page.get_by_test_id('headline')
-    expect(header).to_have_text('Упражнение "Изучаем слова"')
+def test_english_headline(page: Page) -> None:
+    headline = page.get_by_test_id('headline')
+    expect(headline).to_have_text('Упражнение "Изучаем слова"')
 
 
 @skip('TODO: add assertions')
