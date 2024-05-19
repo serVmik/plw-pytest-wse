@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "plw-pytest-wse"
+version = "0.1.0"
+description = ""
+authors = ["Sergei Mikurov <454004@mail.ru>"]
+readme = "README.md"
+packages = [{include = "plw_pytest_wse"}]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+playwright = "^1.44.0"
+flake8 = "^7.0.0"
+pytest-playwright = "^0.5.0"
+python-dotenv = "^1.0.1"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

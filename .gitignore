@@ -1,0 +1,5 @@
+.env
+.idea/
+state.json
+
+__pycache__/
