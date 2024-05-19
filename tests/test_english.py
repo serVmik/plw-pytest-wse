@@ -1,5 +1,6 @@
 import os
 from typing import Generator
+from unittest import skip
 from urllib.parse import urljoin
 
 import pytest
@@ -33,6 +34,7 @@ def run_around_tests(page: Page) -> Generator[None, None, None]:
     yield
 
 
+# @skip("TODO: add 'task_conditions' to session")
 def test_english_page_status(page: Page) -> None:
     assert page.goto(page.url).ok
 
@@ -41,9 +43,9 @@ def test_english_title(page: Page) -> None:
     expect(page).to_have_title('Английский язык')
 
 
-def test_english_header(page: Page) -> None:
-    header = page.get_by_test_id('headline')
-    expect(header).to_have_text('Английский язык')
+def test_english_headline(page: Page) -> None:
+    headline = page.get_by_test_id('headline')
+    expect(headline).to_have_text('Английский язык')
 
 
 def test_chapter_links(page: Page) -> None:
