@@ -12,7 +12,7 @@ HOST = os.getenv('HOST')
 URL_PATH = 'english/'
 STATE_PATH = '/home/dev/projects/plw-pytest-wse/tests/.auth/state.json'
 ENGLISH_CHAPTER_PATHS = {
-    'Добавить слово': 'english/word/create/',
+    'Добавить слово в словарь': 'english/word/create/',
     'Список слов': 'english/word/list/',
     'Категории': 'english/categories/list/',
     'Источники': 'english/sources/list/',
