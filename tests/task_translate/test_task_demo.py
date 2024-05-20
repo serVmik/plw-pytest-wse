@@ -34,3 +34,9 @@ def test_page_data(page: Page) -> None:
     expect(page).to_have_title('Упражнение "Изучаем слова"')
     headline = page.get_by_test_id('headline')
     expect(headline).to_have_text('Упражнение "Изучаем слова"')
+
+
+def test_title_the_link(page: Page):
+    page.get_by_test_id('headline').click()
+    # English task conditions choice page has submit.
+    expect(page.locator('input[value="Начать"]')).to_be_visible()
