@@ -10,10 +10,11 @@ load_dotenv()
 
 HOST = os.getenv('HOST')
 STATE_PATH = os.getenv('STATE_PATH')
-NAVBAR = ['Личный кабинет: user3', 'Английский язык', 'Выйти']
+NAVBAR = ['Личный кабинет: user3', 'Английский язык', 'Математика', 'Выйти']
 NAVIGATION = {
     'Личный кабинет: user3': 'users/3/account/',
     'Английский язык': 'english/',
+    'Математика': 'task/math-calculate-choice/',
     'Выйти': 'users/logout/',
 }
 
@@ -34,14 +35,19 @@ def run_around_tests(page: Page) -> Generator[None, None, None]:
 
 def test_contains(page: Page) -> None:
     """Test navbar contain."""
-    navbar = page.locator('.navbar-nav li')
-    expect(navbar).to_have_count(3)
-    expect(navbar).to_contain_text(NAVBAR)
+    navbar_items = page.locator('.navbar-nav a')
+    expect(navbar_items).to_have_count(4)
+    expect(navbar_items).to_have_text(NAVBAR)
+
+
+def test_has_links(page: Page) -> None:
+    navbar_items = page.locator('.navbar-nav a')
+    expect(navbar_items).to_contain_text(NAVBAR[:-2])
 
 
 def test_navigation_links(page: Page) -> None:
     """Test navigation links."""
-    for link_name in NAVBAR[:-2]:
+    for link_name in NAVBAR[:-1]:
         url = urljoin(HOST, NAVIGATION[link_name])
         page.goto(url)
         expect(page).to_have_url(url)
