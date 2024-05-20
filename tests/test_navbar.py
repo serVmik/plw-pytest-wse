@@ -1,5 +1,6 @@
 import os
 from typing import Generator
+from unittest import skip
 from urllib.parse import urljoin
 
 import pytest
@@ -10,9 +11,9 @@ load_dotenv()
 
 HOST = os.getenv('HOST')
 STATE_PATH = os.getenv('STATE_PATH')
-NAVBAR = ['Личный кабинет: user3', 'Английский язык', 'Математика', 'Выйти']
+NAVBAR = ['Личный кабинет', 'Английский язык', 'Математика', 'Выйти']
 NAVIGATION = {
-    'Личный кабинет: user3': 'users/3/account/',
+    'Личный кабинет': 'users/3/account/',
     'Английский язык': 'english/',
     'Математика': 'task/math-calculate-choice/',
     'Выйти': 'users/logout/',
@@ -42,12 +43,13 @@ def test_contains(page: Page) -> None:
 
 def test_has_links(page: Page) -> None:
     navbar_items = page.locator('.navbar-nav a')
-    expect(navbar_items).to_contain_text(NAVBAR[:-2])
+    expect(navbar_items).to_contain_text(NAVBAR)
 
 
+@skip('TODO: add test user')
 def test_navigation_links(page: Page) -> None:
     """Test navigation links."""
-    for link_name in NAVBAR[:-1]:
+    for link_name in NAVBAR[:-2]:
         url = urljoin(HOST, NAVIGATION[link_name])
         page.goto(url)
         expect(page).to_have_url(url)

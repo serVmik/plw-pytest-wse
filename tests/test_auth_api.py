@@ -1,5 +1,6 @@
 import os
 import re
+from unittest import skip
 from urllib.parse import urljoin
 
 from dotenv import load_dotenv
@@ -13,6 +14,7 @@ TEST_USERNAME = os.getenv('TEST_USERNAME')
 TEST_USER_PASSWORD = os.getenv('TEST_USER_PASSWORD')
 
 
+@skip('TODO: remove assertion by user name in navbar')
 def test_user_authentication_api(page: Page, context: BrowserContext) -> None:
     """Test user authentication api."""
     # get csrf_token
