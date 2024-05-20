@@ -10,8 +10,9 @@ load_dotenv()
 
 HOST = os.getenv('HOST')
 URL_PATH = 'english/'
-STATE_PATH = '/home/dev/projects/plw-pytest-wse/tests/.auth/state.json'
+STATE_PATH = os.getenv('STATE_PATH')
 ENGLISH_CHAPTER_PATHS = {
+    'Упражнение "Изучаем слова"': 'task/english-translate-choice/',
     'Добавить слово в словарь': 'english/word/create/',
     'Список слов': 'english/word/list/',
     'Категории': 'english/categories/list/',

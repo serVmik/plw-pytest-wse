@@ -7,7 +7,7 @@ from playwright.sync_api import BrowserContext, APIRequestContext, Page, expect
 
 load_dotenv()
 
-HOST = 'http://localhost:8000/'
+HOST = os.getenv('HOST')
 LOGIN_PATH = 'users/login/'
 TEST_USERNAME = os.getenv('TEST_USERNAME')
 TEST_USER_PASSWORD = os.getenv('TEST_USER_PASSWORD')

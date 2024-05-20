@@ -9,7 +9,7 @@ from playwright.sync_api import Page, expect
 load_dotenv()
 
 HOST = os.getenv('HOST')
-TASK_CHOICE_URL_PATH = 'task/english-translate-choice/'
+URL_PATH = 'task/english-translate-choice/'
 STATE_PATH = os.getenv('STATE_PATH')
 
 
@@ -25,7 +25,7 @@ def browser_context_args(browser_context_args):
 def run_around_tests(page: Page) -> Generator[None, None, None]:
     # First, visit the task conditions page, the transition from which
     # sets the task conditions. Otherwise, there will be a redirect
-    page.goto(urljoin(HOST, TASK_CHOICE_URL_PATH))
+    page.goto(urljoin(HOST, URL_PATH))
     page.get_by_test_id('submit').click()
     yield
 
