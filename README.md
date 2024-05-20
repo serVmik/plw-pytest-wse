@@ -1,14 +1,26 @@
 # plw-pytest-wse
 
-## Testing with Playwright and pytest
+## Testing "Web Self Educate" application with Playwright and Pytest
 
 ### Install
+```
 make install  
 playwright install --with-deps  
 playwright install  
+```
 
-### .env
-Populate .env  
+### Populate .env
+- add host  
+- add user name  
+- add user password  
 
-### Run
-make check  
+
+### Save the signed-in state
+```
+make state
+```
+
+### Run tests
+```
+make test
+```
