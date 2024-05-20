@@ -8,7 +8,7 @@ load_dotenv()
 URL = 'http://localhost:8000/users/login/'
 TEST_USERNAME = os.getenv('TEST_USERNAME')
 TEST_USER_PASSWORD = os.getenv('TEST_USER_PASSWORD')
-PATH_STATE = '/home/dev/projects/plw-pytest-wse/tests/.auth/state.json'
+PATH_STATE = '/home/dev/projects/plw-pytest-wse/tests/auth/state.json'
 
 
 def get_state(playwright):
