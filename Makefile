@@ -1,3 +1,5 @@
+TEST_JUST := tests/task_math
+
 install:
 	poetry install
 
@@ -13,5 +15,7 @@ lint:
 test:
 	pytest
 
-check: lint test
+just-test:
+	pytest $(TEST_JUST)
 
+check: lint test
