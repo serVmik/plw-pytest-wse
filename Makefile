@@ -7,7 +7,7 @@ codegen:
 	playwright codegen http://localhost:8000
 
 state:
-	python -m tests.auth.save_auth_state
+	poetry run python -m tests.auth.save_auth_state
 
 headed-test:
 	pytest --headed --slowmo 2000
@@ -16,7 +16,7 @@ lint:
 	poetry run flake8
 
 test:
-	pytest
+	poetry run pytest
 
 just-test:
 	pytest $(TEST_JUST)
