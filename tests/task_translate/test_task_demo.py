@@ -40,3 +40,9 @@ def test_title_the_link(page: Page):
     page.get_by_test_id('headline').click()
     # English task conditions choice page has submit.
     expect(page.locator('input[value="Начать"]')).to_be_visible()
+
+
+def test_detail_word_link(page: Page):
+    """Test link from task page to detail word info."""
+    page.locator('#question').click()
+    expect(page).to_have_title('Обзор слова')
