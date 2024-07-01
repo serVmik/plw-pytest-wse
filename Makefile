@@ -1,8 +1,3 @@
-TEST_JUST := tests/task_math
-
-install:
-	poetry install
-
 codegen:
 	playwright codegen http://localhost:8000
 
@@ -17,8 +12,5 @@ lint:
 
 test:
 	poetry run pytest
-
-just-test:
-	pytest $(TEST_JUST)
 
 check: lint test
