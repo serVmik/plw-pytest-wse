@@ -3,10 +3,11 @@
 ## Testing "Web Self Educate" application with Playwright and Pytest
 
 ### Install
-```
-make install  
-playwright install --with-deps  
-playwright install  
+```commandline
+poetry install --no-root
+source .venv/bin/activate
+playwright install --with-deps
+playwright install
 ```
 
 ### Populate .env
@@ -16,11 +17,11 @@ playwright install
 
 
 ### Save the signed-in state
-```
+```commandline
 make state
 ```
 
 ### Run tests
-```
+```commandline
 make test
 ```
